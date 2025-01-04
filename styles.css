@@ -1,36 +1,112 @@
+/* styles.css */
+
+/* Reset Some Default Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    background-color: #121212;
+    color: #E0E0E0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
 }
 
-h1 {
-    color: #333;
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FFFFFF;
 }
 
-#qrcode {
-    margin-top: 20px;
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #1E1E1E;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-input[type="text"] {
-    width: 300px;
-    padding: 5px;
-    margin-bottom: 10px;
+/* Form Elements */
+input[type="text"], select, input[type="file"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #2C2C2C;
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+input[type="text"]::placeholder {
+    color: #AAAAAA;
 }
 
 select {
-    padding: 5px;
-    margin-bottom: 10px;
+    height: 50px;
 }
 
+/* Buttons */
 button {
-    padding: 5px 10px;
-}
-
-button:hover {
-    background-color: #f0f0f0;
+    padding: 12px 25px;
+    margin: 10px 5px 0 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #3F51B5;
+    color: #FFFFFF;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-p {
-    margin: 5px 0;
+button:disabled {
+    background-color: #555555;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #303F9F;
+}
+
+/* QR Code and Highlighted Image Containers */
+#qrcode, #highlightedImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#qrcode img, #highlightedImage canvas {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #3F51B5;
+    border-radius: 10px;
+}
+
+/* Decoded Information */
+#decodedInfo {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #2C2C2C;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.1em;
+    color: #00E676;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
+        margin: 10px 0 0 0;
+    }
 }
