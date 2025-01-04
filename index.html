@@ -8,6 +8,9 @@
 <body>
 
     <h1>QR Code Converter</h1>
+
+    <!-- Section for Generating QR Codes -->
+    <h2>Generate QR Code</h2>
     <p>Enter a link to generate its QR code:</p>
     <input type="text" id="linkInput" placeholder="Enter link here" />
 
@@ -24,8 +27,18 @@
 
     <div id="qrcode"></div>
 
-    <!-- Include the QRCode library -->
+    <!-- Section for Decoding QR Codes -->
+    <h2>Decode QR Code</h2>
+    <input type="file" id="qrInput" accept="image/*" />
+    <button id="decodeBtn">Decode QR Code</button>
+
+    <!-- Separate Divs for Decoded Info and Highlighted Image -->
+    <div id="decodedInfo"></div>
+    <div id="highlightedImage"></div>
+
+    <!-- Include the QRCode library and jsQR -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
