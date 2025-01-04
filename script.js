@@ -131,9 +131,20 @@ decodeBtn.addEventListener('click', () => {
                 highlightQRCode(context, code.location);
             } else {
                 decodedInfo.textContent = 'No QR code found. Please try another image.';
-                // Clear any previously highlighted images
-                highlightedImage.innerHTML = '';
+                // Optionally, you can clear any previously highlighted images
+                // highlightedImage.innerHTML = '';
             }
+
+            // Display the image (with or without highlighting)
+            const displayCanvas = document.createElement('canvas');
+            displayCanvas.width = canvas.width;
+            displayCanvas.height = canvas.height;
+            const displayCtx = displayCanvas.getContext('2d');
+            displayCtx.drawImage(canvas, 0, 0);
+
+            // Clear previous image and display the new one
+            highlightedImage.innerHTML = '';
+            highlightedImage.appendChild(displayCanvas);
         };
     };
 
@@ -141,7 +152,7 @@ decodeBtn.addEventListener('click', () => {
 });
 
 /**
- * Highlight the QR code area on the image and display it
+ * Highlight the QR code area on the image
  * @param {CanvasRenderingContext2D} ctx - Canvas 2D context
  * @param {Object} location - QR code location data from jsQR
  */
@@ -156,15 +167,4 @@ function highlightQRCode(ctx, location) {
     ctx.lineWidth = 4;
     ctx.strokeStyle = 'red';
     ctx.stroke();
-
-    // Create a new canvas to display the highlighted image
-    const displayCanvas = document.createElement('canvas');
-    displayCanvas.width = ctx.canvas.width;
-    displayCanvas.height = ctx.canvas.height;
-    const displayCtx = displayCanvas.getContext('2d');
-    displayCtx.drawImage(ctx.canvas, 0, 0);
-
-    // Clear any existing highlighted images and append the new one
-    highlightedImage.innerHTML = '';
-    highlightedImage.appendChild(displayCanvas);
 }
