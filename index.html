@@ -7,34 +7,46 @@
 </head>
 <body>
 
-    <h1>QR Code Converter</h1>
+    <div class="container">
+        <h1>QR Code Converter</h1>
 
-    <!-- Section for Generating QR Codes -->
-    <h2>Generate QR Code</h2>
-    <p>Enter a link to generate its QR code:</p>
-    <input type="text" id="linkInput" placeholder="Enter link here" />
+        <!-- Toggle Buttons for Generate and Decode Sections -->
+        <div class="toggle-buttons">
+            <button id="showGenerateBtn" class="active">Generate QR Code</button>
+            <button id="showDecodeBtn">Decode QR Code</button>
+        </div>
 
-    <p>Select Error Correction Level:</p>
-    <select id="correctionLevel">
-        <option value="L">L - Low (7% damage can be restored)</option>
-        <option value="M" selected>M - Medium (15% damage can be restored)</option>
-        <option value="Q">Q - Quartile (25% damage can be restored)</option>
-        <option value="H">H - High (30% damage can be restored)</option>
-    </select>
+        <!-- Section for Generating QR Codes -->
+        <div id="generateSection">
+            <h2>Generate QR Code</h2>
+            <p>Enter a link to generate its QR code:</p>
+            <input type="text" id="linkInput" placeholder="Enter link here" />
 
-    <button id="generateBtn">Generate QR Code</button>
-    <button id="downloadBtn" disabled>Download QR Code</button>
+            <p>Select Error Correction Level:</p>
+            <select id="correctionLevel">
+                <option value="L">L - Low (7% damage can be restored)</option>
+                <option value="M" selected>M - Medium (15% damage can be restored)</option>
+                <option value="Q">Q - Quartile (25% damage can be restored)</option>
+                <option value="H">H - High (30% damage can be restored)</option>
+            </select>
 
-    <div id="qrcode"></div>
+            <button id="generateBtn">Generate QR Code</button>
+            <button id="downloadBtn" disabled>Download QR Code</button>
 
-    <!-- Section for Decoding QR Codes -->
-    <h2>Decode QR Code</h2>
-    <input type="file" id="qrInput" accept="image/*" />
-    <button id="decodeBtn">Decode QR Code</button>
+            <div id="qrcode"></div>
+        </div>
 
-    <!-- Separate Divs for Decoded Info and Highlighted Image -->
-    <div id="decodedInfo"></div>
-    <div id="highlightedImage"></div>
+        <!-- Section for Decoding QR Codes -->
+        <div id="decodeSection" style="display: none;">
+            <h2>Decode QR Code</h2>
+            <input type="file" id="qrInput" accept="image/*" />
+            <button id="decodeBtn">Decode QR Code</button>
+
+            <!-- Separate Divs for Decoded Info and Highlighted Image -->
+            <div id="decodedInfo"></div>
+            <div id="highlightedImage"></div>
+        </div>
+    </div>
 
     <!-- Include the QRCode library and jsQR -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>

@@ -10,7 +10,33 @@ const qrInput = document.getElementById('qrInput');
 const decodedInfo = document.getElementById('decodedInfo');
 const highlightedImage = document.getElementById('highlightedImage');
 
+const showGenerateBtn = document.getElementById('showGenerateBtn');
+const showDecodeBtn = document.getElementById('showDecodeBtn');
+
+const generateSection = document.getElementById('generateSection');
+const decodeSection = document.getElementById('decodeSection');
+
 let qrCode; // Variable to store the QR code instance
+
+// Function to toggle active button styling
+function setActiveButton(activeButton, inactiveButton) {
+    activeButton.classList.add('active');
+    inactiveButton.classList.remove('active');
+}
+
+// Event Listener for Show Generate Section Button
+showGenerateBtn.addEventListener('click', () => {
+    generateSection.style.display = 'block';
+    decodeSection.style.display = 'none';
+    setActiveButton(showGenerateBtn, showDecodeBtn);
+});
+
+// Event Listener for Show Decode Section Button
+showDecodeBtn.addEventListener('click', () => {
+    decodeSection.style.display = 'block';
+    generateSection.style.display = 'none';
+    setActiveButton(showDecodeBtn, showGenerateBtn);
+});
 
 // Event Listener for Generating QR Code
 generateBtn.addEventListener('click', () => {
